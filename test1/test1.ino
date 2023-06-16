@@ -6,5 +6,10 @@ void setup() {
 }
 
 void loop() {
+if (Serial.avaible()>0){
+	option=Serial.read();
+	if (option=='a'){
+	}
+}
 
 }
