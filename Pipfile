@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 pyserial = "*"
+mediapipe = "*"
+opencv-python = "*"
 
 [dev-packages]
 
