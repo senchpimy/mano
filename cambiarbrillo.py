@@ -3,13 +3,14 @@ import os
 import numpy as np
 import mediapipe as mp
 
-webcam=cv2.VideoCapture(2)
+webcam=cv2.VideoCapture(0)
 mp_hand= mp.solutions.hands
 hands = mp_hand.Hands()
 
 mp_drawing_utils = mp.solutions.drawing_utils
-
+print("bslsklhhsdkl")
 while webcam.isOpened():
+    print("bslsklhhsdkl")
     succes, img = webcam.read()
     if not succes:break
     result = hands.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
