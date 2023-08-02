@@ -3,6 +3,8 @@ import os
 import numpy as np
 import mediapipe as mp
 
+# Ejemplo de funcionamiento del porgrama, lee la distancia entre la punta del pulgra y del indice y cambia el brillo en un servidor Xorg
+
 webcam=cv2.VideoCapture(0)
 mp_hand= mp.solutions.hands
 hands = mp_hand.Hands()
