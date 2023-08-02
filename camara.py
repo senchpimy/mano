@@ -41,8 +41,6 @@ while webcam.isOpened():
             print(regla_de_tres(mitad,ring*1.26)) # Relacion 0.8:1 con el medio
             print(regla_de_tres(mitad,pinky*1.58)) # Relacion 0.6:1 con el medio
             #print(regla_de_tres(mitad,pulgar*1.25)) # Relacion 0.8:1 con el medio
-            print(mitad)
-            print(medio)
             mp_drawing_utils.draw_landmarks(img,hand, mp_hand.HAND_CONNECTIONS)
 
     cv2.imshow("image",img)
