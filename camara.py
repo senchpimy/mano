@@ -39,10 +39,10 @@ while webcam.isOpened():
             ring = distancia(hand.landmark[mp_hand.HandLandmark.RING_FINGER_MCP],hand.landmark[mp_hand.HandLandmark.RING_FINGER_TIP])
             pinky = distancia(hand.landmark[mp_hand.HandLandmark.PINKY_MCP],hand.landmark[mp_hand.HandLandmark.PINKY_TIP])
             mano.pinky(regla_de_tres(mitad,pinky*1.58))
-            mano.pinky(regla_de_tres(mitad,pinky*1.58))
-            mano.pinky(regla_de_tres(mitad,pinky*1.58))
-            mano.pinky(regla_de_tres(mitad,pinky*1.58))
-            mano.pinky(regla_de_tres(mitad,pinky*1.58))
+            mano.ring(regla_de_tres(mitad,ring*1.26))
+            mano.index(regla_de_tres(mitad,indice*1.12))
+            mano.thumb(regla_de_tres(mitad,pulgar*1.25))
+            mano.middle(regla_de_tres(mitad,medio))
             #print(regla_de_tres(mitad,medio))
             #print(regla_de_tres(mitad,indice*1.12)) # Relacion 0.9:1 con el medio
             #print(regla_de_tres(mitad,ring*1.26)) # Relacion 0.8:1 con el medio
