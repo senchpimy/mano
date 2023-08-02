@@ -1,44 +1,53 @@
 #include <Servo.h>
-Servo myservo;
+Servo thumb;
+Servo index;
+Servo middle;
+Servo ring;
+Servo pinky;
 
 
-byte test[4];
-int p;
-int l;
-int j;
+byte test[5];
+int c;
+int d;
+int u;
 int result;
 void setup() {
 	Serial.begin(9600);
-  myservo.attach(9);
+  thumb.attach(4);
+  index.attach(5);
+  middle.attach(6);
+  ring.attach(7);
+  pinky.attach(8);
 }
 
 void loop() {
   if (Serial.available()){
-    Serial.readBytes(test,4);
-    p = test[1] - 48;
-    l = test[2] - 48;
-    j = test[3] - 48;
-    result = (p*100)+(l*10)+j;
+    Serial.readBytes(test,5);
+    c = test[1] - 48;
+    d = test[2] - 48;
+    u = test[3] - 48;
+    result = (c*100)+(d*10)+u;
+    //Serial.println(result);
     
     char dedo = test[0];
     switch (dedo){
-      case 'P': // Pulgar
-        myservo.write(result);
-        Serial.println(result);
+      case 'T': // Thumb
+        thumb.write(result);
         break;
-      case 'A': // Apuntador
-        Serial.println("lalalala");
+      case 'I': // Index
+        index.write(result);
         break;
-      case 'M': // Medio
-        Serial.println("lalalala");
+      case 'M': // Middle
+        middle.write(result);
         break;
-      case 'a': // Anillero
-        Serial.println("lalalala");
+      case 'R': // ring
+        ring.write(result);
         break;
-      case 'm': // Meñique
-        Serial.println("lalalala");
+      case 'P': // Pinky
+        pinky.write(result);
         break;
       default:
+        Serial.println("Not found");
         break;
     }
   }

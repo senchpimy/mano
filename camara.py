@@ -1,7 +1,7 @@
 import cv2
-import os
 import numpy as np
 import mediapipe as mp
+import hand
 
 webcam=cv2.VideoCapture(0)
 mp_hand= mp.solutions.hands
@@ -24,6 +24,8 @@ def regla_de_tres(referencia:float, mapear:float)->int:
     if int(p)>180:return 180
     return int(p) 
 
+mano = hand.hand()
+
 while webcam.isOpened():
     succes, img = webcam.read()
     if not succes:break
@@ -36,10 +38,15 @@ while webcam.isOpened():
             indice = distancia(hand.landmark[mp_hand.HandLandmark.INDEX_FINGER_MCP],hand.landmark[mp_hand.HandLandmark.INDEX_FINGER_TIP])
             ring = distancia(hand.landmark[mp_hand.HandLandmark.RING_FINGER_MCP],hand.landmark[mp_hand.HandLandmark.RING_FINGER_TIP])
             pinky = distancia(hand.landmark[mp_hand.HandLandmark.PINKY_MCP],hand.landmark[mp_hand.HandLandmark.PINKY_TIP])
-            print(regla_de_tres(mitad,medio))
-            print(regla_de_tres(mitad,indice*1.12)) # Relacion 0.9:1 con el medio
-            print(regla_de_tres(mitad,ring*1.26)) # Relacion 0.8:1 con el medio
-            print(regla_de_tres(mitad,pinky*1.58)) # Relacion 0.6:1 con el medio
+            mano.pinky(regla_de_tres(mitad,pinky*1.58))
+            mano.pinky(regla_de_tres(mitad,pinky*1.58))
+            mano.pinky(regla_de_tres(mitad,pinky*1.58))
+            mano.pinky(regla_de_tres(mitad,pinky*1.58))
+            mano.pinky(regla_de_tres(mitad,pinky*1.58))
+            #print(regla_de_tres(mitad,medio))
+            #print(regla_de_tres(mitad,indice*1.12)) # Relacion 0.9:1 con el medio
+            #print(regla_de_tres(mitad,ring*1.26)) # Relacion 0.8:1 con el medio
+            #print(regla_de_tres(mitad,pinky*1.58)) # Relacion 0.6:1 con el medio
             #print(regla_de_tres(mitad,pulgar*1.25)) # Relacion 0.8:1 con el medio
             mp_drawing_utils.draw_landmarks(img,hand, mp_hand.HAND_CONNECTIONS)
 
